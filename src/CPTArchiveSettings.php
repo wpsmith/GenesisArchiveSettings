@@ -79,9 +79,6 @@ if ( ! class_exists( __NAMESPACE__ . '\CPTArchiveSettings' ) ) {
 		 *
 		 * @param object $object Object passed to do_meta_boxes function.
 		 * @param array $meta_box Array of parameters passed to add_meta_box function.
-		 *
-		 * @since 2.5.0
-		 *
 		 */
 		public function do_meta_box( $object, $meta_box ) {
 

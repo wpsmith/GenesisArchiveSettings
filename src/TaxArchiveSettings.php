@@ -57,18 +57,6 @@ if ( ! class_exists( __NAMESPACE__ . '\TaxArchiveSettings' ) ) {
 		/**
 		 * Echo out the content of a meta box.
 		 *
-		 * @param string $id Id of the meta box.
-		 * @param object $object Object for the meta box. Default null.
-		 */
-		public function show_meta_box( $id, $object = null ) {
-
-			parent::show_meta_box( $id, $object );
-
-		}
-
-		/**
-		 * Echo out the content of a meta box.
-		 *
 		 * @param object $object Object passed to do_meta_boxes function.
 		 * @param array $meta_box Array of parameters passed to add_meta_box function.
 		 */

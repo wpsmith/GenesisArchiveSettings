@@ -86,7 +86,7 @@ namespace WPS\WP\Plugins\Team;
             <p>
                 <select id="<?php echo esc_attr( $this->get_field_id( 'archive_image_size' ) ); ?>" class="genesis-image-size-selector" name="<?php echo esc_attr( $this->get_field_name( 'archive_image_size' ) ); ?>">
 					<?php
-					printf( '<option value="" %s>%s</option>', selected( '', $this->get_field_value( 'archive_image_size' ), false ), __( 'None', WPS_PRESS_RELEASES_DOMAIN ) );
+					printf( '<option value="" %s>%s</option>', selected( '', $this->get_field_value( 'archive_image_size' ), false ), __( 'None', 'wps' ) );
 					$sizes = genesis_get_image_sizes();
 					foreach ( (array) $sizes as $name => $size ) {
 						printf( '<option value="%s" %s>%s (%sx%s)</option>', esc_attr( $name ), selected( $name, $this->get_field_value( 'archive_image_size' ), false ), esc_html( $name ), esc_html( $size['width'] ), esc_html( $size['height'] ) );
