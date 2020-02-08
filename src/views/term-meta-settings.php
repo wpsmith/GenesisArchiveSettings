@@ -54,7 +54,7 @@ $genesis_tax = get_taxonomy( $object->taxonomy );
                 ?>
                 <input type="hidden" name="genesis-meta[headline_image]" id="genesis-meta[headline_image]" value="<?php echo esc_attr( get_term_meta( $object->term_id, 'headline_image', true ) ); ?>" />
                 <input type="hidden" name="genesis-meta[headline_image_id]" id="genesis-meta[headline_image_id]" value="<?php echo esc_attr( $image_id ); ?>" />
-                <button class="button setting-upload"><?php _e('Select/Upload', WPS_PARTNERS_DOMAIN ) ?></button>
+                <button class="button setting-upload"><?php _e('Select/Upload', 'wps' ) ?></button>
                 <div class="preview">
 		            <?php
 		            if ( $image_id ) {
@@ -66,7 +66,7 @@ $genesis_tax = get_taxonomy( $object->taxonomy );
                 </div>
                 <p class="description">
 		            <?php
-		            esc_html_e( 'Optional. Upload an image', WPS_PARTNERS_DOMAIN );
+		            esc_html_e( 'Optional. Upload an image', 'wps' );
 		            ?>
                 </p>
             </td>
@@ -93,9 +93,9 @@ $genesis_tax = get_taxonomy( $object->taxonomy );
                 }
                 //Extend the wp.media object
                 customUploader = wp.media.frames.file_frame = wp.media({
-                    title: "<?php _e( 'Choose Image', WPS_PARTNERS_DOMAIN ); ?>",
+                    title: "<?php _e( 'Choose Image', 'wps' ); ?>",
                     button: {
-                        text: "<?php _e( 'Choose Image', WPS_PARTNERS_DOMAIN ); ?>"
+                        text: "<?php _e( 'Choose Image', 'wps' ); ?>"
                     },
                     multiple: false
                 });
