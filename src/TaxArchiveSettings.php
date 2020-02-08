@@ -21,7 +21,7 @@
  * @since      0.0.1
  */
 
-namespace WPS\WP\Plugins\Partners\Admin;
+namespace WPS\WP\Genesis;
 
 if ( ! class_exists( __NAMESPACE__ . '\TaxArchiveSettings' ) ) {
 	/**
