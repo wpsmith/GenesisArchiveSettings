@@ -11,49 +11,49 @@
  * @link    https://my.studiopress.com/themes/genesis/
  */
 
-$genesis_tax = get_taxonomy( $object->taxonomy );
+$wps_tax = get_taxonomy( $object->taxonomy );
 ?>
-<h2><?php echo esc_html( $genesis_tax->labels->singular_name ) . ' ' . esc_html__( 'Archive Settings', 'genesis' ); ?></h2>
+<h2><?php echo esc_html( $wps_tax->labels->singular_name ) . ' ' . esc_html__( 'Archive Settings', 'wps' ); ?></h2>
 <table class="form-table">
 	<tbody>
 		<tr class="form-field">
-			<th scope="row"><label for="genesis-meta[headline]"><?php esc_html_e( 'Archive Headline', 'genesis' ); ?></label></th>
+			<th scope="row"><label for="<?php $this->field_id( 'headline' ); ?>"><?php esc_html_e( 'Archive Headline', 'wps' ); ?></label></th>
 			<td>
-				<input name="genesis-meta[headline]" id="genesis-meta[headline]" type="text" value="<?php echo esc_attr( get_term_meta( $object->term_id, 'headline', true ) ); ?>" size="40" />
+				<input name="<?php $this->field_name( 'headline' ); ?>" id="<?php $this->field_id( 'headline' ); ?>" type="text" value="<?php echo esc_attr( get_term_meta( $object->term_id, 'headline', true ) ); ?>" size="40" />
 				<p class="description">
 					<?php
 					if ( genesis_a11y( 'headings' ) ) {
-						esc_html_e( 'Your child theme uses accessible headings. If you leave this blank, the default accessible heading will be used.', 'genesis' );
+						esc_html_e( 'Your child theme uses accessible headings. If you leave this blank, the default accessible heading will be used.', 'wps' );
 					} else {
-						esc_html_e( 'Leave empty if you do not want to display a headline.', 'genesis' );
+						esc_html_e( 'Leave empty if you do not want to display a headline.', 'wps' );
 					}
 					?>
 				</p>
 			</td>
 		</tr>
 		<tr class="form-field">
-			<th scope="row"><label for="genesis-meta-intro-text"><?php esc_html_e( 'Archive Intro Text', 'genesis' ); ?></label></th>
+			<th scope="row"><label for="<?php echo $this->settings_field . '-intro-text'; ?>"><?php esc_html_e( 'Archive Intro Text', 'wps' ); ?></label></th>
 			<td>
 				<?php
 				wp_editor(
 					get_term_meta( $object->term_id, 'intro_text', true ),
-					'genesis-meta-intro-text',
+					$this->settings_field . '-intro-text',
 					array(
-						'textarea_name' => 'genesis-meta[intro_text]',
+						'textarea_name' => $this->get_field_name( 'intro_text' ),
 					)
 				);
 				?>
-				<p class="description"><?php esc_html_e( 'Leave empty if you do not want to display any intro text.', 'genesis' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Leave empty if you do not want to display any intro text.', 'wps' ); ?></p>
 			</td>
 		</tr>
         <tr class="form-field">
-            <th scope="row"><label for="genesis-meta[headline_image]"><?php esc_html_e( 'Archive Headline Image', 'genesis' ); ?></label></th>
+            <th scope="row"><label for="<?php $this->field_id( 'headline_image' ); ?>"><?php esc_html_e( 'Archive Headline Image', 'wps' ); ?></label></th>
             <td>
                 <?php
                 $image_id = get_term_meta( $object->term_id, 'headline_image_id', true );
                 ?>
-                <input type="hidden" name="genesis-meta[headline_image]" id="genesis-meta[headline_image]" value="<?php echo esc_attr( get_term_meta( $object->term_id, 'headline_image', true ) ); ?>" />
-                <input type="hidden" name="genesis-meta[headline_image_id]" id="genesis-meta[headline_image_id]" value="<?php echo esc_attr( $image_id ); ?>" />
+                <input type="hidden" name="<?php $this->field_name( 'headline_image' ); ?>" id="<?php $this->field_id( 'headline_image' ); ?>" value="<?php echo esc_attr( get_term_meta( $object->term_id, 'headline_image', true ) ); ?>" />
+                <input type="hidden" name="<?php $this->field_name( 'headline_image_id' ); ?>" id="<?php $this->field_id( 'headline_image_id' ); ?>" value="<?php echo esc_attr( $image_id ); ?>" />
                 <button class="button setting-upload"><?php _e('Select/Upload', 'wps' ) ?></button>
                 <div class="preview">
 		            <?php
@@ -71,6 +71,47 @@ $genesis_tax = get_taxonomy( $object->taxonomy );
                 </p>
             </td>
         </tr>
+        <tr valign="top">
+            <th scope="row"><label for="<?php $this->field_id( 'archive_image_size' ); ?>"><b><?php esc_html_e( 'Archive Image Size', 'wps' ); ?></b></label></th>
+            <td>
+                <p>
+                    <select id="<?php echo esc_attr( $this->get_field_id( 'archive_image_size' ) ); ?>" class="genesis-image-size-selector" name="<?php echo esc_attr( $this->get_field_name( 'archive_image_size' ) ); ?>">
+						<?php
+						printf( '<option value="" %s>%s</option>', selected( '', $this->get_field_value( 'archive_image_size' ), false ), __( 'None', 'wps' ) );
+						$sizes = genesis_get_image_sizes();
+						foreach ( (array) $sizes as $name => $size ) {
+							printf( '<option value="%s" %s>%s (%sx%s)</option>', esc_attr( $name ), selected( $name, $this->get_field_value( 'archive_image_size' ), false ), esc_html( $name ), esc_html( $size['width'] ), esc_html( $size['height'] ) );
+						}
+						?>
+                    </select>
+                </p>
+                <p class="description">
+					<?php
+					esc_html_e( 'If empty, archive will use the default global featured image size.', 'wps' );
+					?>
+                </p>
+            </td>
+        </tr>
+
+        <tr valign="top">
+            <th scope="row"><label for="<?php $this->field_id( 'archive_image_alignment' ); ?>"><b><?php esc_html_e( 'Archive Image Alignment', 'wps' ); ?></b></label></th>
+            <td>
+                <p>
+                    <select id="<?php echo esc_attr( $this->get_field_id( 'archive_image_alignment' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'archive_image_alignment' ) ); ?>">
+                        <option value="alignnone">- <?php esc_html_e( 'None', 'wps' ); ?> -</option>
+                        <option value="alignleft" <?php selected( 'alignleft', $this->get_field_value( 'archive_image_alignment' ) ); ?>><?php esc_html_e( 'Left', 'wps' ); ?></option>
+                        <option value="alignright" <?php selected( 'alignright', $this->get_field_value( 'archive_image_alignment' ) ); ?>><?php esc_html_e( 'Right', 'wps' ); ?></option>
+                        <option value="aligncenter" <?php selected( 'aligncenter', $this->get_field_value( 'archive_image_alignment' ) ); ?>><?php esc_html_e( 'Center', 'wps' ); ?></option>
+                    </select>
+                </p>
+                <p class="description">
+					<?php
+					esc_html_e( 'If empty, archive will use the default global featured image size.', 'wps' );
+					?>
+                </p>
+            </td>
+        </tr>
+
 	</tbody>
 </table>
 
@@ -80,9 +121,9 @@ $genesis_tax = get_taxonomy( $object->taxonomy );
 
             var customUploader,
                 $clickElem = $(".setting-upload"),
-                $targetImage = $('.wrap input[name="genesis-meta[headline_image]"]'),
+                $targetImage = $('.wrap input[name="<?php $this->field_name( 'headline_image' ); ?>"]'),
                 $previewDiv = $(".preview"),
-                $targetImageID = $('.wrap input[name="genesis-meta[headline_image_id]"]');
+                $targetImageID = $('.wrap input[name="<?php $this->field_name( 'headline_image_id' ); ?>"]');
 
             $clickElem.click(function(e) {
                 e.preventDefault();

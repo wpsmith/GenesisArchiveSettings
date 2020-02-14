@@ -42,7 +42,7 @@ namespace WPS\WP\Plugins\Team;
 	</tr>
 
 	<tr valign="top">
-		<th scope="row"><label for="<?php $this->field_id( 'intro_text' ); ?>"><b><?php esc_html_e( 'Archive Intro Text', 'wps' ); ?></b></label></th>
+		<th scope="row"><label for="<?php echo $this->settings_field . '-intro-text'; ?>"><b><?php esc_html_e( 'Archive Intro Text', 'wps' ); ?></b></label></th>
 		<td>
 			<?php
 			wp_editor(
