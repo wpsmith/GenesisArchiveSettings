@@ -30,6 +30,8 @@ if ( ! class_exists( __NAMESPACE__ . '\TaxArchiveSettings' ) ) {
 	 */
 	class TaxArchiveSettings extends \Genesis_Admin_Meta_Boxes {
 
+		public $settings_field = 'genesis-meta';
+
 		/**
 		 * TaxArchiveSettings constructor.
 		 */
