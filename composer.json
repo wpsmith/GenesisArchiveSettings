@@ -1,13 +1,14 @@
 {
-  "name": "wpsmith/genesis-cpt-archive-settings",
-  "description": "Custom Genesis Custom Post Type Settings admin page that adds an archive image.",
+  "name": "wpsmith/genesis-archive-settings",
+  "description": "Custom Genesis CPT/Taxonomy Archive Settings admin page that adds an archive image.",
   "keywords": [
     "wordpress",
     "genesis",
     "custom-post-types",
+    "taxonomy",
     "archive"
   ],
-  "homepage": "https://github.com/wpsmith/GenesisCPTArchiveSettings",
+  "homepage": "https://github.com/wpsmith/GenesisArchiveSettings",
   "license": "GPL-2.0+",
   "authors": [
     {
@@ -18,11 +19,10 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/wpsmith/GenesisCPTArchiveSettings/issues"
+    "issues": "https://github.com/wpsmith/GenesisArchiveSettings/issues"
   },
   "require": {
-    "php": ">=7.2.0",
-    "wpsmith/singleton": "^1.0.0"
+    "php": ">=7.2.0"
   },
   "autoload": {
     "psr-4": {
